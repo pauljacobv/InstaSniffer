@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="com.test.hello" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>Ionic Starter Template</name>
-  <description>Ionic Starter Template</description>
-  <author email="support@fingent.com" href="http://fingent.com/">Ionic Starter Template</author>
+<widget id="com.doubletaps.instasniffer" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+  <name>Insta Sniffer</name>
+  <description>A cross platform mobile application to sniff Instagram display picture.</description>
+  <author email="support@xcheck.xyz" href="http://xcheck.xyz/">Insta Sniffer</author>
   <content src="index.html"/>
   <access origin="*"/>
   <preference name="webviewbounce" value="false"/>
