@@ -1,7 +1,7 @@
 {
-  "name": "ionic-starter-template",
-  "version": "1.0.0",
-  "description": "Tech Support",
+  "name": "ionic-boilerplate-template",
+  "version": "1.1.1",
+  "description": "ionic-boilerplate-template: An Ionic project",
   "dependencies": {
     "gulp": "^3.5.6",
     "gulp-sass": "^2.0.4",
@@ -18,7 +18,6 @@
     "cordova-plugin-device",
     "cordova-plugin-console",
     "cordova-plugin-whitelist",
-    "cordova-plugin-network-information",
     "cordova-plugin-splashscreen",
     "cordova-plugin-statusbar",
     "ionic-plugin-keyboard"
