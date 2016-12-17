@@ -1,4 +1,2 @@
-# ionic-boilerplate-template
-
-A starter boilerplate for Ionic.
-This is a Cloned and sanitised repo from this [contributor.](https://github.com/jakesdavis/ionic-boilerplate-template)
+# InstaSniffer
+A cross platform mobile application to sniff Instagram display picture.
