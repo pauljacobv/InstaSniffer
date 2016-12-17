@@ -17,14 +17,14 @@
    *
    */
   module.factory('request', function ($cordovaDevice, $ionicLoading, $cordovaNetwork, $http, $q, $rootScope) {
-    var baseUrl = "api.openweathermap.org/data/2.5";
+    var baseUrl = "http://igdp.co";
 
     var service = {
-      weather: "/weather"
+      sniff: "/i.php"
     };
 
     var objParams = {
-      "APPID": ""
+      "name": ""
     };
     /**
      * @function defaultHeader
@@ -47,7 +47,7 @@
     };
 
     document.addEventListener("deviceready", function () {
-      objParams.APPID = "db585f9c2596dd5357447a9169729ae8";
+      // objParams.APPID = "db585f9c2596dd5357447a9169729ae8";
     });
 
     var common = {
@@ -85,52 +85,91 @@
         return returnObj;
       }
     };
-    var _ = {
-      weather: {
-        getWeather: function (params) {
+    // var _ = {
+    //   weather: {
+    //     getWeather: function (params) {
+    //       var deferred = $q.defer();
+    //       var header = defaultHeader();
+    //       header.method = "GET";
+    //       header.url = baseUrl + service.feedback;
+    //       header.params = {
+    //         "APPID": objParams.APPID,
+    //         "q": params.city
+    //       };
+    //       if ($cordovaNetwork.isOnline()) {
+    //         common.preLoader();
+    //         $http(header).success(function (data) {
+    //           deferred.resolve(data);
+    //           common.postLoader();
+    //         }).error(function (data) {
+    //           deferred.reject(data);
+    //           common.postLoader();
+    //         });
+    //       } else {
+    //         $rootScope.toast({
+    //           text: "Please check your internet connection",
+    //         });
+    //         deferred.reject();
+    //       }
+    //       return deferred.promise;
+    //     }
+    //   }
+    // };
+
+    // return {
+    //   weather: {
+    //     /**
+    //      * @function
+    //      * @name this.weather.getWeather
+    //      * @description Get Weather
+    //      *
+    //      * @argument params.q   (string, optional)  The city where weather needs to be queried
+    //      *
+    //      * @returns {Object} Deferred.promise
+    //      */
+    //     getWeather: function (params) {
+    //       return _.weather.getWeather(params);
+    //     }
+    //   }
+    // };
+
+
+      var request = {
+        sniff: function () {
+          // console.log('userid:'+userid);
+          // console.log('deviceid:'+deviceid);
           var deferred = $q.defer();
           var header = defaultHeader();
           header.method = "GET";
-          header.url = baseUrl + service.feedback;
-          header.params = {
-            "APPID": objParams.APPID,
-            "q": params.city
-          };
-          if ($cordovaNetwork.isOnline()) {
-            common.preLoader();
-            $http(header).success(function (data) {
-              deferred.resolve(data);
-              common.postLoader();
-            }).error(function (data) {
-              deferred.reject(data);
-              common.postLoader();
-            });
-          } else {
-            $rootScope.toast({
-              text: "Please check your internet connection",
-            });
-            deferred.reject();
-          }
+          header.url = baseUrl + service.sniff;
+          header.Content-Type = 'application/x-www-form-urlencoded';
+          // header.params = {
+          //   'Content-Type': 'application/x-www-form-urlencoded'
+          // };
+          console.log(header);
+          // if ($cordovaNetwork.isOnline()) {
+          common.preLoader();
+          $http(header).success(function (data) {
+            console.log("success");
+            console.log(data);
+            deferred.resolve(data);
+            common.postLoader();
+          }).error(function (data) {
+            console.log("error");
+            console.log(data);
+            deferred.reject(data);
+            common.postLoader();
+          });
+          // } else {
+          //   $rootScope.toast({
+          //     text: "Please check your internet connection",
+          //   });
+          //   deferred.reject();
+          // }
           return deferred.promise;
         }
-      }
+      
     };
-
-    return {
-      weather: {
-        /**
-         * @function
-         * @name this.weather.getWeather
-         * @description Get Weather
-         *
-         * @argument params.q   (string, optional)  The city where weather needs to be queried
-         *
-         * @returns {Object} Deferred.promise
-         */
-        getWeather: function (params) {
-          return _.weather.getWeather(params);
-        }
-      }
-    };
+    return request;
   });
 })();
